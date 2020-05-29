@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+     <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-details"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Questions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="description">
+    <h1>Intéragissez avec les personnes suivant la discussion en cours avec NiceSurvey</h1>
+    <p> Posez des questions à l'audience pour connaître son opinion sur le sujet du débat en cours. 
+      Vous pourrez par la suite visionner les statistiques liés aux questions. </p>
+  </div>
+  <div id="container">
+    <ion-refresher slot="fixed" (ionRefresh)="updateQuestions()">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <strong *ngIf="availableQuestions.length == 0" class="wait-text">
+      <p> Ajoutez une nouvelle question en appuyant sur (+)<br>
+        <img src="assets/icon/sujets2.png"></p>
+    </strong>
+    <ion-list *ngIf="availableQuestions.length > 0">
+      <ion-item *ngFor="let question of availableQuestions"  class="question-item" (click)="viewQuestion(question)">
+        <ion-icon name="chatbubbles" class="rond"></ion-icon>
+        <ion-label>{{question.title}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addQuestion()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

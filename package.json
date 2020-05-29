@@ -1,15 +1,19 @@
 {
-  "name": "client",
+  "name": "nicesurvey",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "PRO_2020",
+  "homepage": "sondage.codeheure.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "resources": "cordova-res android && node scripts/resources.js",
+    "electron:linux": "electron-packager ./electron NiceSurvey --overwrite --asar=true --platform=linux --arch=x64 --icon=resources/android/icon.png --prune=true --out=release-builds",
+    "electron:mac": "electron-packager ./electron NiceSurvey --overwrite --platform=darwin --arch=x64 --prune=true --out=release-builds --icon=resources/android/icon.png",
+    "electron:win": "electron-packager ./electron NiceSurvey --overwrite --asar=true --platform=win32 --arch=ia32 --prune=true --out=release-builds --icon=resources/android/icon.ico --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName='NiceSurvey'"
   },
   "private": true,
   "dependencies": {
@@ -21,13 +25,26 @@
     "@angular/router": "~8.2.14",
     "@capacitor/android": "^1.5.1",
     "@capacitor/core": "1.5.1",
+    "@ionic-native/barcode-scanner": "^5.24.0",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/local-notifications": "^5.23.0",
     "@ionic-native/splash-screen": "^5.0.0",
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic-native/unique-device-id": "^5.22.0",
     "@ionic/angular": "^5.0.0",
+    "@ionic/cli": "^6.9.3",
+    "angularx-qrcode": "^2.1.1",
+    "capacitor-app": "file:electron",
+    "chart.js": "^2.9.3",
+    "cordova-plugin-badge": "^0.8.8",
+    "cordova-plugin-device": "^2.0.3",
+    "cordova-plugin-local-notification": "^0.9.0-beta.2",
     "cordova-plugin-uniquedeviceid": "^1.3.2",
     "core-js": "^2.5.4",
+    "electron": "^9.0.0",
+    "ngx-electron": "^2.2.0",
+    "ngx-socket-io": "^3.0.1",
+    "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"
@@ -44,6 +61,8 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "cordova-res": "^0.14.0",
+    "electron-packager": "^14.2.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
@@ -56,5 +75,5 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "An Ionic project"
+  "description": "Survey application"
 }

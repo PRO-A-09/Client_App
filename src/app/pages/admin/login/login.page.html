@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Connexion
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-begin"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content text-center class="no-scroll">
+  <div class="animation-area">
+    <ul class = "box-area">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  
+  <div class="head">
+    <div class="head2">
+      <img src="assets/icon/Dessin 3.png" alt = "Logo" class = "logo"> <br>
+      <img src="assets/icon/LogoBlanc.png" alt = "Logo" class = "logo">
+    </div>
+
+ 
+    <fieldset class="text">
+
+    
+    <p class="welcome-text">Bienvenue! Connectez-vous à votre compte.</p>
+  
+    <ion-item>
+      <ion-input placeholder="Username" [(ngModel)]="username"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-input placeholder="Password" type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" class="login-btn" (click)="login()">Se connecter</ion-button>
+    <ion-button expand="block" class="login-btn" (click)="register()">Créer un compte</ion-button>
+
+  </fieldset>
+
+  </div>
+  
+  
+  
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Suggestions
+    </ion-title>
+    <ion-buttons slot="end" >
+      <ion-button autoHide="false" color="Lignt" (click)="disconnect()">
+        <ion-icon name="power-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="first">
+      <p class="other">Préparez-vous à réagir au débat, choisissez les questions les plus pertinentes pour vous</p>
+  </div>
+
+  <div id="container" class="second">
+    <ion-list *ngIf="availableSuggestions.length > 0">
+      <ion-item *ngFor="let suggestion of getAvailableSuggestions()" class="question-item">
+        <ion-icon name="chatbubbles-outline" class="rond"></ion-icon>
+        <ion-label>{{suggestion.suggestion}}</ion-label>
+        <ion-button float-right (click)="voteSuggestion(suggestion)">
+          <ion-label>{{suggestion.votes}}</ion-label>
+          <ion-icon name="arrow-up-circle"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+    <strong *ngIf="availableSuggestions.length == 0" class="wait-text">
+      <p>En attente de suggestions </p>
+      <img src="assets/icon/suggestion.png" alt = "Dessin 1" class = "logo2">
+    </strong>
+  </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="newSuggestion()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="admin-details"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Suggestions
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="description">
+    <h1>Discutez, questionez, et rendez vos débats plus interactifs avec NiceSurvey</h1>
+    <p> Créez vos débats rapidement avec l'application et intéragissez avec votre audience. 
+      Vous pouvez créer plusieurs débats et visionner leurs statistiques. </p>
+  </div>
+  
+  <div id="container">
+    <ion-list *ngIf="availableSuggestions.length > 0">
+      <ion-item *ngFor="let suggestion of getAvailableSuggestions()" class="question-item">
+        <ion-icon name="chatbubbles-outline" class="rond"></ion-icon>
+        <ion-label>{{suggestion.suggestion}}</ion-label>
+        <ion-button float-right disabled="">
+          <ion-label>{{suggestion.votes}}</ion-label>
+          <ion-icon name="arrow-up-circle" color="Warning-tint"></ion-icon>
+        </ion-button>
+        <ion-buttons slot="end" *ngIf="suggestion.removed == false">
+          <ion-icon name="alert-circle-outline" class="ban-btn" (click)="presentBanAlert(suggestion.uuid)"></ion-icon>
+        </ion-buttons>
+        <ion-buttons slot="end" *ngIf="suggestion.removed === true">
+          <ion-icon name="alert-circle-outline" class="unban-btn" (click)="unbanUser(suggestion.uuid)"></ion-icon>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+    <strong *ngIf="availableSuggestions.length == 0" class="wait-text">
+      <p>En attente de suggestions <br>
+        <img src="assets/icon/debat2.png" class="logo"></p>
+    </strong>
+  </div>
+</ion-content>
